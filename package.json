@@ -1,0 +1,15 @@
+{
+  "name": "system-livescript",
+  "version": "0.0.1",
+  "description": "LiveScript transformer for SystemJS",
+  "main": "system-ls.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "lsc -c system-ls.ls"
+  },
+  "author": "Jami Pekkanen <jami.pekkanen@helsinki.fi>",
+  "license": "Public domain",
+  "dependencies": {
+    "livescript": "^1.4.0"
+  }
+}

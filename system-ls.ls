@@ -1,8 +1,16 @@
 livescript = require 'livescript'
 
 export translate = (load) ->
-	output = livescript.compile load.source,
+	resultAddress = load.address + ".js"
+	result = livescript.compile load.source,
 		filename: load.address
-		map: true
+		outputFilename: resultAddress
+		map: "linked"
 		bare: true
-	load.source = output.code
+		const: false
+		header: false
+
+	result.map.setSourceContent load.address, load.source
+	load.source = result.code
+	load.metadata.sourceMap = result.map
+

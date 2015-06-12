@@ -3,12 +3,18 @@
   var livescript, translate, out$ = typeof exports != 'undefined' && exports || this;
   livescript = require('livescript');
   out$.translate = translate = function(load){
-    var output;
-    output = livescript.compile(load.source, {
+    var resultAddress, result;
+    resultAddress = load.address + ".js";
+    result = livescript.compile(load.source, {
       filename: load.address,
-      map: true,
-      bare: true
+      outputFilename: resultAddress,
+      map: "linked",
+      bare: true,
+      'const': false,
+      header: false
     });
-    return load.source = output.code;
+    result.map.setSourceContent(load.address, load.source);
+    load.source = result.code;
+    return load.metadata.sourceMap = result.map;
   };
 }).call(this);

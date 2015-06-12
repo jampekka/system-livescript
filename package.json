@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "LiveScript transformer for SystemJS",
   "main": "system-ls.js",
+  "files": ["system-ls.js", "enable-ls.js"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "lsc -c system-ls.ls"
